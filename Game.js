@@ -30,30 +30,45 @@ function Game(canvas, context, ASSET_MANAGER)
          
     this.bodyDef = new this.b2BodyDef;
          
-    // create ground
+    // SETUP WORLD
 		
-	this.world = new this.b2World( new this.b2Vec2(0, 10),  true );  // eg. world(gravity,sleep)
+	this.world = new this.b2World( new this.b2Vec2(0, 10),  false );  // eg. world(gravity,allow sleep)
 	
     this.bodyDef.type = this.b2Body.b2_staticBody;
     this.fixDef.shape = new this.b2PolygonShape;
+    
+    // BOTTOM (GROUND)
     this.fixDef.shape.SetAsBox(20, 2);
-    this.bodyDef.position.Set(10, 400 / 5);
+    this.bodyDef.position.Set(10, (400/30)+1.8);
     this.world.CreateBody(this.bodyDef).CreateFixture(this.fixDef);
+    // TOP
     this.bodyDef.position.Set(10, -1.8);
     this.world.CreateBody(this.bodyDef).CreateFixture(this.fixDef);
+    // LEFT
     this.fixDef.shape.SetAsBox(2, 14);
-    this.bodyDef.position.Set(-1.8, 13);
+    this.bodyDef.position.Set(-1.8, 3);
     this.world.CreateBody(this.bodyDef).CreateFixture(this.fixDef);
-    this.bodyDef.position.Set(21.8, 13);
+    // RIGHT
+    this.bodyDef.position.Set((800/30)+1.8, 3);
+    this.world.CreateBody(this.bodyDef).CreateFixture(this.fixDef);
+    // CREATE A BOX
+    this.bodyDef.type = this.b2Body.b2_dynamicBody;
+    this.fixDef.shape = new this.b2PolygonShape;
+    this.fixDef.shape.SetAsBox(1, 1);
+    this.bodyDef.position.Set(18, 5);
     this.world.CreateBody(this.bodyDef).CreateFixture(this.fixDef);
 	
 	this.debugDraw = new this.b2DebugDraw();
 	this.debugDraw.SetSprite(document.getElementById("surface").getContext("2d"));
 	this.debugDraw.SetDrawScale(30.0);
-	this.debugDraw.SetFillAlpha(1.0);
+	this.debugDraw.SetFillAlpha(0.5);
+	
 	this.debugDraw.SetLineThickness(1.0);
 	this.debugDraw.SetFlags(this.b2DebugDraw.e_shapeBit | this.b2DebugDraw.e_jointBit);
 	this.world.SetDebugDraw(this.debugDraw);
+	
+	
+	
 }
 
 /*
@@ -86,7 +101,9 @@ Game.prototype.init = function()
 */
 Game.prototype.update = function()
 {
- 
+  			this.world.Step(1 / 60, 10, 10);
+            this.world.DrawDebugData();
+            this.world.ClearForces();
 };
 
 /*

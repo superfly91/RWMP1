@@ -10,55 +10,33 @@ function Game(canvas, context, ASSET_MANAGER)
 
 	this.marioSprite = null;
 	
-	this.b2Vec2 = Box2D.Common.Math.b2Vec2;
-	this.b2AABB = Box2D.Collision.b2AAB;
-	this.b2BodyDef = Box2D.Dynamics.b2BodyDef;
-	this.b2Body = Box2D.Dynamics.b2Body;
-	this.b2FixtureDef = Box2D.Dynamics.b2FixtureDef;
-	this.b2Fixture = Box2D.Dynamics.b2Fixture;
-	this.b2World = Box2D.Dynamics.b2World;
-	this.b2MassData = Box2D.Collision.Shapes.b2MassData;
-	this.b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape;
-	this.b2CircleShape = Box2D.Collision.Shapes.b2CircleShape;
-	this.b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
-	this.b2MouseJointDef =  Box2D.Dynamics.Joints.b2MouseJointDef;
+	// GLOBAL PROPERTIES
+	this.glo_density = 1.0;
+	this.glo_friction = 0.5;
+	this.glo_rest = 0.2;
 	
-	this.fixDef = new this.b2FixtureDef;
-	this.fixDef.density = 1.0;
-    this.fixDef.friction = 0.5;
-    this.fixDef.restitution = 0.2;
+	this.b2World = Box2D.Dynamics.b2World;
+	this.b2Vec2 = Box2D.Common.Math.b2Vec2;
+	this.b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
          
-    this.bodyDef = new this.b2BodyDef;
-         
-    // SETUP WORLD
-		
-	this.world = new this.b2World(canvas,context, new this.b2Vec2(0, 10),  false );  // eg. world(gravity,allow sleep)
-    this.bodyDef.type = this.b2Body.b2_staticBody;
-    this.fixDef.shape = new this.b2PolygonShape;
+    // SETUP WORLD	
+	this.world = new this.b2World(new this.b2Vec2(0, 10),  false );  // eg. world(gravity,allow sleep)
     
     // BOTTOM (GROUND)
-    this.fixDef.shape.SetAsBox(20, 2);
-    this.bodyDef.position.Set(10, (400/30)+1.8);
-    this.world.CreateBody(this.bodyDef).CreateFixture(this.fixDef);
+    this.ground = new PhysicsObject(canvas,context,this.world,"static",20,2,10,(400/30)+1.8,this.glo_density,this.glo_friction,this.glo_rest);
     // TOP
-    this.bodyDef.position.Set(10, -1.8);
-    this.world.CreateBody(this.bodyDef).CreateFixture(this.fixDef);
+    this.roof = new PhysicsObject(canvas,context,this.world,"static",20,2,10,-1.8,this.glo_density,this.glo_friction,this.glo_rest);
     // LEFT
-    this.fixDef.shape.SetAsBox(2, 14);
-    this.bodyDef.position.Set(-1.8, 3);
-    this.world.CreateBody(this.bodyDef).CreateFixture(this.fixDef);
+    this.leftBorder = new PhysicsObject(canvas,context,this.world,"static",2,14,-1.8,3,this.glo_density,this.glo_friction,this.glo_rest);
     // RIGHT
-    this.bodyDef.position.Set((800/30)+1.8, 3);
-    this.world.CreateBody(this.bodyDef).CreateFixture(this.fixDef);
-    // CREATE A BOX
-    //this.box1 = new PhysicsObject(this.world,"dynamic",1,1,18,5);
+    this.rightBorder = new PhysicsObject(canvas,context,this.world,"static",2,14,(800/30)+1.8,3,this.glo_density,this.glo_friction,this.glo_rest);
+    // A PHYSICS BOX
+    this.box1 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,18,5,this.glo_density,this.glo_friction,this.glo_rest);
     
-    this.bodyDef.type = this.b2Body.b2_dynamicBody;
-    this.fixDef.shape = new this.b2PolygonShape;
-    this.fixDef.shape.SetAsBox(1, 1);
-    this.bodyDef.position.Set(5, 5);
-    this.world.CreateBody(this.bodyDef).CreateFixture(this.fixDef);
-	
+     // PLAYER
+     // *** ADD CONTROLS TO THIS OBJECT ***
+    this.player = new PhysicsObject(canvas,context,this.world,"dynamic",0.1,0.2,5,5,this.glo_density,this.glo_friction,this.glo_rest);
+    	
 	this.debugDraw = new this.b2DebugDraw();
 	this.debugDraw.SetSprite(document.getElementById("surface").getContext("2d"));
 	this.debugDraw.SetDrawScale(30.0);

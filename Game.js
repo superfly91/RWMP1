@@ -32,8 +32,7 @@ function Game(canvas, context, ASSET_MANAGER)
          
     // SETUP WORLD
 		
-	this.world = new this.b2World( new this.b2Vec2(0, 10),  false );  // eg. world(gravity,allow sleep)
-	
+	this.world = new this.b2World(canvas,context, new this.b2Vec2(0, 10),  false );  // eg. world(gravity,allow sleep)
     this.bodyDef.type = this.b2Body.b2_staticBody;
     this.fixDef.shape = new this.b2PolygonShape;
     
@@ -52,23 +51,23 @@ function Game(canvas, context, ASSET_MANAGER)
     this.bodyDef.position.Set((800/30)+1.8, 3);
     this.world.CreateBody(this.bodyDef).CreateFixture(this.fixDef);
     // CREATE A BOX
+    //this.box1 = new PhysicsObject(this.world,"dynamic",1,1,18,5);
+    
     this.bodyDef.type = this.b2Body.b2_dynamicBody;
     this.fixDef.shape = new this.b2PolygonShape;
     this.fixDef.shape.SetAsBox(1, 1);
-    this.bodyDef.position.Set(18, 5);
+    this.bodyDef.position.Set(5, 5);
     this.world.CreateBody(this.bodyDef).CreateFixture(this.fixDef);
 	
 	this.debugDraw = new this.b2DebugDraw();
 	this.debugDraw.SetSprite(document.getElementById("surface").getContext("2d"));
 	this.debugDraw.SetDrawScale(30.0);
-	this.debugDraw.SetFillAlpha(0.5);
+	this.debugDraw.SetFillAlpha(1);
 	
 	this.debugDraw.SetLineThickness(1.0);
 	this.debugDraw.SetFlags(this.b2DebugDraw.e_shapeBit | this.b2DebugDraw.e_jointBit);
 	this.world.SetDebugDraw(this.debugDraw);
-	
-	
-	
+
 }
 
 /*
@@ -114,7 +113,7 @@ Game.prototype.draw = function()
 	//this.context.drawImage(this.marioSprite, 0, 0);
 	
 	
-	this.world.DrawDebugData();
+	//this.world.DrawDebugData();
 	
 };
 

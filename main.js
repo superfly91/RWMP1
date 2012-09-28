@@ -4,10 +4,11 @@
 
 var canvas = document.getElementById('surface');
 var context = canvas.getContext('2d');
-
+var player = canvas.getContext('2d');
 var ASSET_MANAGER = new AssetManager();
-
 var game = new Game(canvas, context, ASSET_MANAGER);
+
+
 
 window.requestAnimFrame = (function(){
       return  window.requestAnimationFrame       ||

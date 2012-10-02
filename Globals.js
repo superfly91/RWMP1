@@ -9,7 +9,7 @@ var WORLD_SCALE = 30;
 
 
 // Box2D
-var Vector2 = Box2D.Common.Math.b2Vec2;
+var b2Vec2 = Box2D.Common.Math.b2Vec2;
 var b2AABB = Box2D.Collision.b2AAB;
 var b2Body = Box2D.Dynamics.b2Body; // This must come before bodyDef
 var b2BodyDef = Box2D.Dynamics.b2BodyDef;

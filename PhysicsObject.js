@@ -20,8 +20,8 @@ function PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos
 		this.fixDef.shape = new b2PolygonShape();
 		this.fixDef.shape.SetAsBox(height,width);
 		this.bodyDef.position.Set(this.x, this.y);
-		this.Body=this.world.CreateBody(this.bodyDef);
-		this.Body.CreateFixture(this.fixDef);
+		this.theBody=this.world.CreateBody(this.bodyDef);
+		this.theBody.CreateFixture(this.fixDef);
 	}
 
 	if(object_type=="dynamic")
@@ -30,8 +30,8 @@ function PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos
 		this.fixDef.shape = new b2PolygonShape();
 		this.fixDef.shape.SetAsBox(height,width);
 		this.bodyDef.position.Set(this.x, this.y);
-		this.Body=this.world.CreateBody(this.bodyDef);
-		this.Body.CreateFixture(this.fixDef);
+		this.theBody=this.world.CreateBody(this.bodyDef);
+		this.theBody.CreateFixture(this.fixDef);
 	}
 
 	if(object_type=="static")

@@ -5,10 +5,11 @@ var GRAVITY_X = 0;
 var GRAVITY_Y = 10;
 var SCREEN_HEIGHT = 0;
 var SCREEN_WIDTH = 0;
+var WORLD_SCALE = 30;
 
 
 // Box2D
-var b2Vec2 = Box2D.Common.Math.b2Vec2;
+var Vector2 = Box2D.Common.Math.b2Vec2;
 var b2AABB = Box2D.Collision.b2AAB;
 var b2Body = Box2D.Dynamics.b2Body; // This must come before bodyDef
 var b2BodyDef = Box2D.Dynamics.b2BodyDef;
@@ -20,3 +21,4 @@ var b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape;
 var b2CircleShape = Box2D.Collision.Shapes.b2CircleShape;
 var b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
 var b2MouseJointDef =  Box2D.Dynamics.Joints.b2MouseJointDef;
+

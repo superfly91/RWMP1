@@ -22,22 +22,35 @@ window.requestAnimFrame = (function(){
 })();
 
 window.addEventListener('keydown', function(event) {
+	
   if (event.keyCode === 37) 
   {
     game.player.moveLeft(); 
   }
-  if (event.keyCode === 39) {
+  if (event.keyCode === 39) 
+  {
 
     game.player.moveRight(); ;   
   }
-  if (event.keyCode === 38) {
+  if (event.keyCode === 38) 
+  {
 
     game.player.jump();
   }
-  if (event.keyCode === 40) {
+  if (event.keyCode === 40)
+   {
     game.player.duck();
-  }  
-}, false);
+  } 
+   
+}
+, false);
+
+
+window.addEventListener('keyup', function(event) {
+	
+	game.player.noInput();
+}
+,false)
 
 /*
 	Function to run the game

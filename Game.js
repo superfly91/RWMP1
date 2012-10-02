@@ -16,13 +16,13 @@ function Game(canvas, context, ASSET_MANAGER)
 	this.world = new this.b2World(new this.b2Vec2(GRAVITY_X, GRAVITY_Y),  false );
 
     // BOTTOM (GROUND)
-    this.ground = new PhysicsObject(canvas,context,this.world,"static",20,2,10,(SCREEN_HEIGHT/30)+1.8,DENSITY,FRICTION,REST);
+    this.ground = new PhysicsObject(canvas,context,this.world,"static",20,2,10,(SCREEN_HEIGHT/WORLD_SCALE)+1.8,DENSITY,FRICTION,REST);
     // TOP
     this.roof = new PhysicsObject(canvas,context,this.world,"static",20,2,10,-1.8,DENSITY,FRICTION,REST);
     // LEFT
     this.leftBorder = new PhysicsObject(canvas,context,this.world,"static",2,14,-1.8,3,DENSITY,FRICTION,REST);
     // RIGHT
-    this.rightBorder = new PhysicsObject(canvas,context,this.world,"static",2,14,(SCREEN_WIDTH/30)+1.8,3,DENSITY,FRICTION,REST);
+    this.rightBorder = new PhysicsObject(canvas,context,this.world,"static",2,14,(SCREEN_WIDTH/WORLD_SCALE)+1.8,3,DENSITY,FRICTION,REST);
     // A PHYSICS BOX
     this.box1 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,2,5,DENSITY,FRICTION,REST);
     //this.box2 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,4,5,DENSITY,FRICTION,REST);

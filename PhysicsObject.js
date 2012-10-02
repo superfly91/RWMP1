@@ -7,8 +7,6 @@ function PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos
 	this.canvas = canvas;
 	this.context = context;
 
-
-
 	this.fixDef = new b2FixtureDef();
 	this.fixDef.density = density;
 	this.fixDef.friction = friction;

@@ -1,6 +1,10 @@
 var DENSITY = 1.0;
 var FRICTION = 0.5;
 var REST = 0.1;
+var GRAVITY_X = 0;
+var GRAVITY_Y = 10;
+var SCREEN_HEIGHT = 0;
+var SCREEN_WIDTH = 0;
 
 
 // Box2D

@@ -12,6 +12,7 @@ function PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos
 	this.fixDef.friction = friction;
 	this.fixDef.restitution = restitution;
 	this.bodyDef = new b2BodyDef();
+	this.body = new b2Body(this.bodyDef);
 
 	if(object_type=="dynamic")
 	{

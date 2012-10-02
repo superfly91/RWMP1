@@ -12,7 +12,7 @@ function PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos
 	this.fixDef.friction = friction;
 	this.fixDef.restitution = restitution;
 	this.bodyDef = new b2BodyDef();
-	this.body = new b2Body(this.bodyDef);
+	//this.body = new b2Body(this.bodyDef);
 	
 	if(object_type=="kinematic")
 	{
@@ -20,10 +20,8 @@ function PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos
 		this.fixDef.shape = new b2PolygonShape();
 		this.fixDef.shape.SetAsBox(height,width);
 		this.bodyDef.position.Set(this.x, this.y);
-		//this.world.CreateBody(this.bodyDef).CreateFixture(this.fixDef);
-		this.theBody=this.world.CreateBody(this.bodyDef);
-		this.theBody.CreateFixture(this.fixDef);
-		//this.theKinematic.SetLinearVelocity(new Vector2(-1,0));
+		this.Body=this.world.CreateBody(this.bodyDef);
+		this.Body.CreateFixture(this.fixDef);
 	}
 
 	if(object_type=="dynamic")
@@ -32,8 +30,8 @@ function PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos
 		this.fixDef.shape = new b2PolygonShape();
 		this.fixDef.shape.SetAsBox(height,width);
 		this.bodyDef.position.Set(this.x, this.y);
-		this.theBody=this.world.CreateBody(this.bodyDef);
-		this.theBody.CreateFixture(this.fixDef);
+		this.Body=this.world.CreateBody(this.bodyDef);
+		this.Body.CreateFixture(this.fixDef);
 	}
 
 	if(object_type=="static")

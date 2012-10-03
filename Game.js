@@ -14,6 +14,15 @@ function Game(canvas, context, ASSET_MANAGER)
 
     // SETUP WORLD
 	this.world = new this.b2World(new this.b2Vec2(GRAVITY_X, GRAVITY_Y),  false );
+	
+	this.debugDraw = new this.b2DebugDraw();
+	this.debugDraw.SetSprite(document.getElementById("surface").getContext("2d"));
+	this.debugDraw.SetDrawScale(30.0);
+	this.debugDraw.SetFillAlpha(1);
+
+	this.debugDraw.SetLineThickness(1.0);
+	this.debugDraw.SetFlags(this.b2DebugDraw.e_shapeBit | this.b2DebugDraw.e_jointBit);
+	this.world.SetDebugDraw(this.debugDraw);
 
     // BOTTOM (GROUND)
     this.ground = new PhysicsObject(canvas,context,this.world,"static",20,2,10,(SCREEN_HEIGHT/WORLD_SCALE)+1.8,DENSITY,FRICTION,REST);
@@ -25,6 +34,7 @@ function Game(canvas, context, ASSET_MANAGER)
     this.rightBorder = new PhysicsObject(canvas,context,this.world,"static",2,14,(SCREEN_WIDTH/WORLD_SCALE)+1.8,3,DENSITY,FRICTION,REST);
     // A PHYSICS BOX
     this.box1 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,2,5,DENSITY,FRICTION,REST);
+    
     //this.box2 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,4,5,DENSITY,FRICTION,REST);
     //this.box3 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,6,5,DENSITY,FRICTION,REST);
     //this.box4 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,8,5,DENSITY,FRICTION,REST);
@@ -35,16 +45,9 @@ function Game(canvas, context, ASSET_MANAGER)
     
      // PLAYER
      // *** ADD CONTROLS TO THIS OBJECT ***
-    this.player = new Player(this.canvas, this.context, this.world);
+   
+	 this.player = new Player(this.canvas, this.context, this.world);
 
-	this.debugDraw = new this.b2DebugDraw();
-	this.debugDraw.SetSprite(document.getElementById("surface").getContext("2d"));
-	this.debugDraw.SetDrawScale(30.0);
-	this.debugDraw.SetFillAlpha(1);
-
-	this.debugDraw.SetLineThickness(1.0);
-	this.debugDraw.SetFlags(this.b2DebugDraw.e_shapeBit | this.b2DebugDraw.e_jointBit);
-	this.world.SetDebugDraw(this.debugDraw);
 
 }
 
@@ -80,6 +83,7 @@ Game.prototype.update = function()
 {
 	this.world.Step(1 / 60, 10, 10);
     this.world.ClearForces();
+    //
 };
 
 /*

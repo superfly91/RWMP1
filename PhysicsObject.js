@@ -1,4 +1,4 @@
-function PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos , yPos, density,friction,restitution)
+function PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos , yPos, density,friction,restitution, name)
 {
 	this.x = xPos;
 	this.y = yPos;
@@ -14,7 +14,7 @@ function PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos
 	this.bodyDef = new b2BodyDef();
 	//this.body = new b2Body(this.bodyDef);
 	
-	if(object_type=="kinematic") // YOU CAN USE THIS FOR CRUSHERS AND VARIOUS OTHER OBSTACLES
+	if(object_type=="kinematic") // WE SHOULD USE THIS FOR OBSTACLES
 	{
 		this.bodyDef.type = b2Body.b2_kinematicBody;
 		this.fixDef.shape = new b2PolygonShape();

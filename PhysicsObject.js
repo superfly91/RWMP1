@@ -14,13 +14,13 @@ function PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos
 	this.bodyDef = new b2BodyDef();
 	//this.body = new b2Body(this.bodyDef);
 	
-	if(object_type=="kinematic")
+	if(object_type=="kinematic") // YOU CAN USE THIS FOR CRUSHERS AND VARIOUS OTHER OBSTACLES
 	{
 		this.bodyDef.type = b2Body.b2_kinematicBody;
 		this.fixDef.shape = new b2PolygonShape();
 		this.fixDef.shape.SetAsBox(height,width);
 		this.bodyDef.position.Set(this.x, this.y);
-		this.theBody=this.world.CreateBody(this.bodyDef);
+		this.theBody = this.world.CreateBody(this.bodyDef);
 		this.theBody.CreateFixture(this.fixDef);
 	}
 

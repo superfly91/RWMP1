@@ -33,7 +33,7 @@ function Game(canvas, context, ASSET_MANAGER)
     // RIGHT
     this.rightBorder = new PhysicsObject(canvas,context,this.world,"static",2,14,(SCREEN_WIDTH/WORLD_SCALE)+1.8,3,DENSITY,FRICTION,REST);
     // A PHYSICS BOX
-    this.box1 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,2,5,DENSITY,FRICTION,REST);
+    this.box1 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,2,5,DENSITY,FRICTION,REST, "box");
     
     //this.box2 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,4,5,DENSITY,FRICTION,REST);
     //this.box3 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,6,5,DENSITY,FRICTION,REST);

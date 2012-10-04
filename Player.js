@@ -1,6 +1,7 @@
 function Player(canvas, context, world)
 {
-	this.PlayerBody = new PhysicsObject(canvas,context,world,"dynamic",0.125,0.2,5,5,0.1,1.0,0.0,"player");
+	// PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos , yPos, density, friction ,restitution, object_name,shape)
+	this.PlayerBody = new PhysicsObject(canvas,context,world,"dynamic",0.13,0.2,5,5,0.1,0.7,0.1,"player");
 	this.speed = 4;
 	this.jumpImpulse = -3;
 	this.PlayerBody.theBody.SetFixedRotation(true);

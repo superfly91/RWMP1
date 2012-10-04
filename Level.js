@@ -6,6 +6,7 @@ function Level(canvas, context, theWorld)
 {
 	this.world = theWorld;
 	
+	// // PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos , yPos, density, friction ,restitution, object_name,shape)
     this.ground = new PhysicsObject(canvas,context,this.world,"static",20,2,10,(SCREEN_HEIGHT/WORLD_SCALE)+1.8,DENSITY,FRICTION,REST);
     // TOP
     this.roof = new PhysicsObject(canvas,context,this.world,"static",20,2,10,-1.8,DENSITY,FRICTION,REST);
@@ -28,7 +29,7 @@ function Level(canvas, context, theWorld)
     	
     }
   
-     this.box2 = new PhysicsObject(canvas,context,this.world,"dynamic",0.2,0.1,4,5,0.2,FRICTION,REST);
+     this.box2 = new PhysicsObject(canvas,context,this.world,"kinematic",0.5,0.5,7,5.2,DENSITY,FRICTION,REST,"test","circle");
 
 	
 }

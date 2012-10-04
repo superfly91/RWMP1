@@ -5,21 +5,24 @@ function Player(canvas, context, world)
 	this.speed = 4;
 	this.jumpImpulse = -3;
 	this.PlayerBody.theBody.SetFixedRotation(true);
+	this.moveLeft = false;
+	this.moveRight = false;
+	this.jump = false;
 }
 
-Player.prototype.moveLeft = function()
+Player.prototype.DoMoveLeft = function()
 {
 	//console.log(this.PlayerBody.theBody.GetLinearVelocity().x);
 	this.PlayerBody.theBody.SetLinearVelocity(new b2Vec2(-this.speed,this.PlayerBody.theBody.GetLinearVelocity().y));
 };
 
-Player.prototype.moveRight = function()
+Player.prototype.DoMoveRight = function()
 {
 	//console.log(this.PlayerBody.theBody.GetLinearVelocity().x);
 	this.PlayerBody.theBody.SetLinearVelocity(new b2Vec2(this.speed,this.PlayerBody.theBody.GetLinearVelocity().y));
 };
 
-Player.prototype.jump = function()
+Player.prototype.DoJump = function()
 {
 	if(this.PlayerBody.theBody.GetLinearVelocity().y < 0.001 && this.PlayerBody.theBody.GetLinearVelocity().y > -0.001)
 	{

@@ -24,23 +24,21 @@ window.requestAnimFrame = (function(){
 window.addEventListener('keydown', function(event) {
 
 
- if (event.keyCode === 37)
- {
-   game.player.moveLeft();
- }
- if (event.keyCode === 39)
- {
-   game.player.moveRight();
- }
- if (event.keyCode === 38)
- {
-   game.player.jump();
- }
- if (event.keyCode === 40)
- {
-   game.player.duck();
- }
-
+switch (event.keyCode)
+{
+	case 37:
+	game.player.moveLeft = true;
+	break;
+	case 39:
+	game.player.moveRight = true;
+	break;
+	case 38:
+	game.player.jump = true;
+	break;
+	case 40:
+	game.player.duck = true;
+	break;
+}
 
 }
 , false);
@@ -48,7 +46,25 @@ window.addEventListener('keydown', function(event) {
 
 window.addEventListener('keyup', function(event) {
 
+switch (event.keyCode)
+{
+	case 37:
+	game.player.moveLeft = false;
+	break;
+	case 39:
+	game.player.moveRight = false;
+	break;
+	case 38:
+	game.player.jump = false;
+	break;
+	case 40:
+	game.player.duck = false;
+	break;
+	default:
 	game.player.noInput();
+}
+
+	
 }
 ,false)
 

@@ -3,38 +3,33 @@ function Game(canvas, context, ASSET_MANAGER)
 {
     SCREEN_HEIGHT = canvas.height;
 	SCREEN_WIDTH = canvas.width;
+	
 	this.canvas = canvas;
 	this.context = context;
 	this.assetManager = ASSET_MANAGER;
 	this.loadAssets();
 
+	// CREATE A BOX 2D WORLD
 	this.b2World = Box2D.Dynamics.b2World;
 	this.b2Vec2 = Box2D.Common.Math.b2Vec2;
 	this.b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
 
     // SETUP WORLD
 	this.world = new this.b2World(new this.b2Vec2(GRAVITY_X, GRAVITY_Y),  false );
-	
+	// SET UP BOX2D DRAW
 	this.debugDraw = new this.b2DebugDraw();
 	this.debugDraw.SetSprite(document.getElementById("surface").getContext("2d"));
 	this.debugDraw.SetDrawScale(30.0);
 	this.debugDraw.SetFillAlpha(1);
-
 	this.debugDraw.SetLineThickness(1.0);
 	this.debugDraw.SetFlags(this.b2DebugDraw.e_shapeBit | this.b2DebugDraw.e_jointBit);
 	this.world.SetDebugDraw(this.debugDraw);
 
-    // BOTTOM (GROUND)
-    
+    // CREATE LEVEL
      this.level1 = new Level(this.canvas, this.context, this.world);
-   
-    
+
      // PLAYER
-     // *** ADD CONTROLS TO THIS OBJECT ***
-   
 	 this.player = new Player(this.canvas, this.context, this.world);
-
-
 }
 
 /*
@@ -76,10 +71,8 @@ Game.prototype.update = function()
 	if(this.player.moveRight == true)
 		this.player.DoMoveRight();	
 		
-
 	this.world.Step(1 / 60, 10, 10);
     this.world.ClearForces();
-    //
 };
 
 /*

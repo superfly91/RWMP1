@@ -25,23 +25,11 @@ function Game(canvas, context, ASSET_MANAGER)
 	this.world.SetDebugDraw(this.debugDraw);
 
     // BOTTOM (GROUND)
-    this.ground = new PhysicsObject(canvas,context,this.world,"static",20,2,10,(SCREEN_HEIGHT/WORLD_SCALE)+1.8,DENSITY,FRICTION,REST);
-    // TOP
-    this.roof = new PhysicsObject(canvas,context,this.world,"static",20,2,10,-1.8,DENSITY,FRICTION,REST);
-    // LEFT
-    this.leftBorder = new PhysicsObject(canvas,context,this.world,"static",2,14,-1.8,3,DENSITY,FRICTION,REST);
-    // RIGHT
-    this.rightBorder = new PhysicsObject(canvas,context,this.world,"static",2,14,(SCREEN_WIDTH/WORLD_SCALE)+1.8,3,DENSITY,FRICTION,REST);
-    // A PHYSICS BOX
-    this.box1 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,2,5,DENSITY,FRICTION,REST, "box");
     
-    //this.box2 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,4,5,DENSITY,FRICTION,REST);
-    //this.box3 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,6,5,DENSITY,FRICTION,REST);
-    //this.box4 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,8,5,DENSITY,FRICTION,REST);
-    //this.box5 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,10,5,DENSITY,FRICTION,REST);
-    //this.box6 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,12,5,DENSITY,FRICTION,REST);
-    //this.box7 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,14,5,DENSITY,FRICTION,REST);
-    //this.box8 = new PhysicsObject(canvas,context,this.world,"dynamic",1,1,16,5,DENSITY,FRICTION,REST);
+     this.level1 = new Level(this.canvas, this.context, this.world);
+
+    
+   
     
      // PLAYER
      // *** ADD CONTROLS TO THIS OBJECT ***

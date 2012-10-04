@@ -1,7 +1,7 @@
 function Player(canvas, context, world)
 {
 	
-	this.PlayerBody = new PhysicsObject(canvas,context,world,"dynamic",0.1,0.2,5,5,0.1,0.1,0.1,"player");
+	this.PlayerBody = new PhysicsObject(canvas,context,world,"dynamic",0.125,0.2,5,5,0.1,0.1,0.1,"player");
 }
 
 Player.prototype.moveLeft = function()
@@ -22,7 +22,7 @@ Player.prototype.jump = function()
 	
 	console.log(this.test_name);
 	
-	if(this.PlayerBody.theBody.GetLinearVelocity().y < 0.01 && this.PlayerBody.theBody.GetLinearVelocity().y > -0.01)
+	if(this.PlayerBody.theBody.GetLinearVelocity().y < 0.001 && this.PlayerBody.theBody.GetLinearVelocity().y > -0.001)
 	{
 		
 		//this.velocity = new Vector2 theBody.GetLinearVelocity();

@@ -23,12 +23,7 @@ Player.prototype.jump = function()
 	console.log(this.test_name);
 	
 	if(this.PlayerBody.theBody.GetLinearVelocity().y < 0.001 && this.PlayerBody.theBody.GetLinearVelocity().y > -0.001)
-	{
-		
-		//this.velocity = new Vector2 theBody.GetLinearVelocity();
-		this.PlayerBody.theBody.ApplyForce(new b2Vec2(this.PlayerBody.theBody.GetLinearVelocity().x,-3))
-		
-	}
+		this.PlayerBody.theBody.ApplyForce(new b2Vec2(this.PlayerBody.theBody.GetLinearVelocity().x,-3));
 	
 };
 

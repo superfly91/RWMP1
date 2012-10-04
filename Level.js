@@ -27,8 +27,7 @@ function Level(canvas, context, theWorld)
     		this.platform[i] = new PhysicsObject(canvas,context,this.world,"static",17.2,0.1,7,(i*2.2),DENSITY,1.0,REST);
     	
     }
- 
-    
+  
      this.box2 = new PhysicsObject(canvas,context,this.world,"dynamic",0.2,0.1,4,5,0.2,FRICTION,REST);
 
 	

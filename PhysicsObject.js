@@ -20,8 +20,6 @@ function PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos
 	// SETS DEFAULT DATA FOR THE OBJECT WHICH CAN BE RETRIEVED LATER
 	this.bodyDef.userData = { name: object_name, initial_x: xPos, initial_y: yPos, friction: friction, restitution: restitution };
 	
-	//this.body = new b2Body(this.bodyDef);
-	
 	if(object_type=="kinematic") // USE THIS OBJECT TYPE FOR OBSTACLES
 		this.bodyDef.type = b2Body.b2_kinematicBody;
 

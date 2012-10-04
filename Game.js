@@ -27,8 +27,6 @@ function Game(canvas, context, ASSET_MANAGER)
     // BOTTOM (GROUND)
     
      this.level1 = new Level(this.canvas, this.context, this.world);
-
-    
    
     
      // PLAYER

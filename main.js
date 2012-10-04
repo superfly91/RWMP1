@@ -23,24 +23,22 @@ window.requestAnimFrame = (function(){
 
 window.addEventListener('keydown', function(event) {
 
-  if (event.keyCode === 37)
-  {
-    game.player.moveLeft();
-  }
-  if (event.keyCode === 39)
-  {
 
-    game.player.moveRight();
-  }
-  if (event.keyCode === 38)
-  {
-
-    game.player.jump();
-  }
-  if (event.keyCode === 40)
-   {
-    game.player.duck();
-  }
+switch (event.keyCode)
+{
+	case 37:
+	game.player.moveLeft();
+	break;
+	case 39:
+	game.player.moveRight();
+	break;
+	case 38:
+	game.player.jump();
+	break;
+	case 40:
+	game.player.duck();
+	break;
+}
 
 }
 , false);

@@ -18,7 +18,7 @@ function PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos
 	this.bodyDef = new b2BodyDef();
 	
 	// SETS DEFAULT DATA FOR THE OBJECT WHICH CAN BE RETRIEVED LATER
-	this.bodyDef.userData = { name: object_name, initial_x: xPos, initial_y: yPos, friction: friction, restitution: restitution } 
+	this.bodyDef.userData = { name: object_name, initial_x: xPos, initial_y: yPos, friction: friction, restitution: restitution };
 	
 	//this.body = new b2Body(this.bodyDef);
 	

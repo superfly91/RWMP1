@@ -33,10 +33,12 @@ switch (event.keyCode)
 	game.player.moveRight = true;
 	break;
 	case 38:
-	game.player.jump = true;
+	//game.player.jump = true;
+	game.gravityUp();
 	break;
 	case 40:
-	game.player.duck = true;
+	//game.player.duck = true;
+	game.gravityDown();
 	break;
 }
 
@@ -64,7 +66,7 @@ switch (event.keyCode)
 	game.player.noInput();
 }
 
-	
+
 }
 ,false)
 

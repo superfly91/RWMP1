@@ -3,7 +3,7 @@ function Game(canvas, context, ASSET_MANAGER)
 {
     SCREEN_HEIGHT = canvas.height;
 	SCREEN_WIDTH = canvas.width;
-	
+
 	this.canvas = canvas;
 	this.context = context;
 	this.assetManager = ASSET_MANAGER;
@@ -62,15 +62,15 @@ Game.prototype.init = function()
 */
 Game.prototype.update = function()
 {
-	if(this.player.moveLeft == true)		
+	if(this.player.moveLeft == true)
 		this.player.DoMoveLeft();
-	
+
 	if(this.player.jump == true)
 		this.player.DoJump();
-	
+
 	if(this.player.moveRight == true)
-		this.player.DoMoveRight();	
-		
+		this.player.DoMoveRight();
+
 	this.world.Step(1 / 60, 10, 10);
     this.world.ClearForces();
 };
@@ -88,4 +88,14 @@ Game.prototype.run = function()
 {
 	this.update();
 	this.draw();
+};
+
+Game.prototype.gravityUp = function()
+{
+	this.world.SetGravity(new b2Vec2(0, -GRAVITY_Y));
+};
+
+Game.prototype.gravityDown = function()
+{
+	this.world.SetGravity(new b2Vec2(0, GRAVITY_Y));
 };

@@ -2,7 +2,7 @@
  * @author Jamie
  */
 
-function PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos , yPos, density, friction ,restitution, object_name,shape)
+function PhysicsObject(canvas,context,theWorld, object_type, width, height, xPos , yPos, density, friction ,restitution, object_name,shape)
 {
 	this.x = xPos;
 	this.y = yPos;
@@ -41,7 +41,7 @@ function PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos
 			break;
 		default:
 			this.fixDef.shape = new b2PolygonShape();
-			this.fixDef.shape.SetAsBox(height,width);
+			this.fixDef.shape.SetAsBox(width, height);
 			break;
 	}		
 		

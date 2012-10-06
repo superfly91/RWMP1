@@ -6,6 +6,12 @@ var GRAVITY_Y = 10;
 var SCREEN_HEIGHT = 0;
 var SCREEN_WIDTH = 0;
 var WORLD_SCALE = 30;
+var SCREEN_HEIGHT = 0;
+var SCREEN_WIDTH = 0;
+var PLYR_DENSITY = 0.1;
+var	PLYR_REST = 0.1;
+var PLYR_FRICTION = 0.7;
+
 
 
 // Box2D

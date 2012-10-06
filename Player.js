@@ -1,7 +1,13 @@
 function Player(canvas, context, world)
 {
+	
+	this.mPOS = new b2Vec2((SCREEN_WIDTH-10)/WORLD_SCALE,(SCREEN_HEIGHT-10)/WORLD_SCALE);
+	this.name = "player";
+	this.height = 0.2;
+	this.width = 0.13;
+
 	// PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos , yPos, density, friction ,restitution, object_name,shape)
-	this.PlayerBody = new PhysicsObject(canvas,context,world,"dynamic",0.13,0.2,5,5,0.1,0.7,0.1,"player");
+	this.PlayerBody = new PhysicsObject(canvas,context,world,"dynamic",this.width,this.height,this.mPOS.x,this.mPOS.y,PLYR_DENSITY,PLYR_FRICTION,PLYR_REST,this.name);
 	this.speed = 4;
 	this.jumpImpulse = -3;
 	this.PlayerBody.theBody.SetFixedRotation(true);

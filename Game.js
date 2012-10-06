@@ -28,6 +28,7 @@ function Game(canvas, context, ASSET_MANAGER)
 	// Add Draw and contact listener to world
 	this.world.SetDebugDraw(this.debugDraw);
 	this.collisions = new contactListener;
+	
 	// When a contact occurs
 	
 	this.collisions.BeginContact = function(contact) 
@@ -35,23 +36,20 @@ function Game(canvas, context, ASSET_MANAGER)
     	console.log("A collision between ", contact.GetFixtureA().GetBody().GetUserData().name, contact.GetFixtureB().GetBody().GetUserData().name," detected");
 	}
 	
-	// When a contact ends
+	// When a collision ends, but not a contact though you would think
 	
 	this.collisions.EndContact = function(contact) 
 	{
-	console.log("A collision between ", contact.GetFixtureA().GetBody().GetUserData().name,contact.GetFixtureB().GetBody().GetUserData().name," has ended");
+		//console.log("A collision between ", contact.GetFixtureA().GetBody().GetUserData().name,contact.GetFixtureB().GetBody().GetUserData().name," has ended");
 	}
 	
 	// Handling collisions using impulses
 	
 	this.collisions.PostSolve = function(contact, impulse) 
 	{
-		console.log("impulse was ", impulse);
+		//console.log("impulse =", impulse.normalImpulses[0]);
     }
     
-    
-
-	
 	this.world.SetContactListener(this.collisions);
 
     // CREATE LEVEL

@@ -8,7 +8,7 @@ function Game(canvas, context, ASSET_MANAGER)
 	this.context = context;
 	this.assetManager = ASSET_MANAGER;
 	this.loadAssets();
-
+	this.lives = PLYR_LIVES;
 	// CREATE A BOX 2D WORLD
 	this.b2World = Box2D.Dynamics.b2World;
 	this.b2Vec2 = Box2D.Common.Math.b2Vec2;
@@ -34,6 +34,17 @@ function Game(canvas, context, ASSET_MANAGER)
 	this.collisions.BeginContact = function(contact) 
 	{
     	console.log("A collision between ", contact.GetFixtureA().GetBody().GetUserData().name, contact.GetFixtureB().GetBody().GetUserData().name," detected");
+    	
+    	if(contact.GetFixtureA().GetBody().GetUserData().name == "player" || contact.GetFixtureB().GetBody().GetUserData().name == "player"){
+    	 if(contact.GetFixtureA().GetBody().GetUserData().name == "spikes" || contact.GetFixtureB().GetBody().GetUserData().name == "spikes")
+    	 {
+	 	 	game.lives--;
+	 	 	game.world.DestroyBody(game.player.PlayerBody.theBody);
+	 	 	
+	 	 }
+	 	}
+	 	
+    	console.log(game.player.lives);
 	}
 	
 	// When a collision ends, but not a contact though you would think
@@ -58,6 +69,12 @@ function Game(canvas, context, ASSET_MANAGER)
      // PLAYER
 	 this.player = new Player(this.canvas, this.context, this.world);
 }
+
+Game.prototype.collisionHandling = function(contact)
+{
+	 
+}
+
 
 /*
 	Function to load the game assets.

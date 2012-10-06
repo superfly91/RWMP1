@@ -5,6 +5,7 @@ function Player(canvas, context, world)
 	this.name = "player";
 	this.height = 0.2;
 	this.width = 0.13;
+	this.lives = PLYR_LIVES;
 
 	// PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos , yPos, density, friction ,restitution, object_name,shape)
 	this.PlayerBody = new PhysicsObject(canvas,context,world,"dynamic",this.width,this.height,this.mPOS.x,this.mPOS.y,PLYR_DENSITY,PLYR_FRICTION,PLYR_REST,this.name);
@@ -44,4 +45,13 @@ Player.prototype.duck = function()
 Player.prototype.noInput = function()
 {
 
+};
+
+Player.prototype.died = function()
+{
+	
+	//this.bodyDef.position.Set(this.mPOS);
+	//this.PlayerBody.theBody.SetPosition(this.mPOS);
+	this.lives-=1;
+	
 };

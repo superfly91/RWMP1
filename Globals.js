@@ -21,6 +21,10 @@ var b2AABB = Box2D.Collision.b2AAB;
 var b2World = Box2D.Dynamics.b2World;
 var b2MassData = Box2D.Collision.Shapes.b2MassData;
 
+// Contact Listener
+var contactListener = Box2D.Dynamics.b2ContactListener;
+
+// Box2D draw
 var b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
 
 

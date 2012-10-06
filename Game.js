@@ -16,6 +16,7 @@ function Game(canvas, context, ASSET_MANAGER)
 
     // SETUP WORLD
 	this.world = new this.b2World(new this.b2Vec2(GRAVITY_X, GRAVITY_Y),  false );
+	
 	// SET UP BOX2D DRAW
 	this.debugDraw = new this.b2DebugDraw();
 	this.debugDraw.SetSprite(document.getElementById("surface").getContext("2d"));
@@ -23,7 +24,30 @@ function Game(canvas, context, ASSET_MANAGER)
 	this.debugDraw.SetFillAlpha(1);
 	this.debugDraw.SetLineThickness(1.0);
 	this.debugDraw.SetFlags(this.b2DebugDraw.e_shapeBit | this.b2DebugDraw.e_jointBit);
+	
+	// Add Draw and contact listener to world
 	this.world.SetDebugDraw(this.debugDraw);
+	this.cListener = new contactListener;
+	
+	this.cListener.BeginContact = function(contact) 
+	{
+    console.log(contact.GetFixtureA().GetBody().GetUserData().name,contact.GetFixtureB().GetBody().GetUserData().name);
+	}
+	
+	this.cListener.EndContact = function(contact) 
+	{
+		//console.log("hit")
+    // console.log(contact.GetFixtureA().GetBody().GetUserData());
+	}
+	
+	this.cListener.PostSolve = function(contact, impulse) 
+	{
+		//console.log("hit")
+		//
+    }
+
+	
+	this.world.SetContactListener(this.cListener);
 
     // CREATE LEVEL
      this.level1 = new Level(this.canvas, this.context, this.world);
@@ -73,7 +97,11 @@ Game.prototype.update = function()
 
 	this.world.Step(1 / 60, 10, 10);
     this.world.ClearForces();
+    
+    
 };
+
+
 
 /*
 	All drawing code goes here

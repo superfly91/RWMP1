@@ -27,31 +27,32 @@ function Game(canvas, context, ASSET_MANAGER)
 	
 	// Add Draw and contact listener to world
 	this.world.SetDebugDraw(this.debugDraw);
-	this.collisionCallback = new contactListener;
-	
+	this.collisions = new contactListener;
 	// When a contact occurs
 	
-	this.collisionCallback.BeginContact = function(contact) 
+	this.collisions.BeginContact = function(contact) 
 	{
-    console.log("A collision between ", contact.GetFixtureA().GetBody().GetUserData().name,contact.GetFixtureB().GetBody().GetUserData().name," detected");
+    	console.log("A collision between ", contact.GetFixtureA().GetBody().GetUserData().name, contact.GetFixtureB().GetBody().GetUserData().name," detected");
 	}
 	
 	// When a contact ends
 	
-	this.collisionCallback.EndContact = function(contact) 
+	this.collisions.EndContact = function(contact) 
 	{
 	console.log("A collision between ", contact.GetFixtureA().GetBody().GetUserData().name,contact.GetFixtureB().GetBody().GetUserData().name," has ended");
 	}
 	
 	// Handling collisions using impulses
 	
-	this.collisionCallback.PostSolve = function(contact, impulse) 
+	this.collisions.PostSolve = function(contact, impulse) 
 	{
 		console.log("impulse was ", impulse);
     }
+    
+    
 
 	
-	this.world.SetContactListener(this.cListener);
+	this.world.SetContactListener(this.collisions);
 
     // CREATE LEVEL
      this.level1 = new Level(this.canvas, this.context, this.world);

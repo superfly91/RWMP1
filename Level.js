@@ -34,7 +34,7 @@ function Level(canvas, context, theWorld)
     this.spikes1 = new PhysicsObject(
     	canvas,context,this.world,"kinematic",
     	2,this.PLATFORM_SIZE,
-    	15,14,DENSITY,FRICTION,REST,"spikes");
+    	15,13,DENSITY,FRICTION,REST,"spikes");
 
 
     this.killBalls = new KillBalls(5, 4, canvas, context, this.world);

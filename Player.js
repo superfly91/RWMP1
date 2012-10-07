@@ -25,10 +25,10 @@ function Player(canvas, context, world)
 
 Player.prototype.update = function()
 {
-	if(this.moveLeft === true && this.player.PlayerBody.theBody.GetLinearVelocity().x<this.speed)
-		this.pDoMoveLeft();
+	if(this.moveLeft === true && this.PlayerBody.theBody.GetLinearVelocity().x<this.speed)
+		this.DoMoveLeft();
 
-	if(this.moveRight === true && this.player.PlayerBody.theBody.GetLinearVelocity().x<-this.speed)
+	if(this.moveRight === true && this.PlayerBody.theBody.GetLinearVelocity().x>-this.speed)
 		this.DoMoveRight();
 	
 	

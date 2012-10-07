@@ -16,7 +16,7 @@ function Player(canvas, context, world)
 		this.name);
 		
 	this.speed = 5;
-	this.jumpImpulse = -3;
+	this.jumpImpulse = -5;
 	this.PlayerBody.theBody.SetFixedRotation(true);
 	this.moveLeft = false;
 	this.moveRight = false;

@@ -105,11 +105,8 @@ Game.prototype.init = function()
 */
 Game.prototype.update = function()
 {
-	if(this.player.moveLeft === true)
-		this.player.DoMoveLeft();
-
-	if(this.player.moveRight === true)
-		this.player.DoMoveRight();
+	
+	this.player.update();
 
 	this.level1.update();
 

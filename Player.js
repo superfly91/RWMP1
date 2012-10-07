@@ -8,14 +8,32 @@ function Player(canvas, context, world)
 	this.lives = PLYR_LIVES;
 
 	// PhysicsObject(canvas,context,theWorld, object_type, height, width, xPos , yPos, density, friction ,restitution, object_name,shape)
-	this.PlayerBody = new PhysicsObject(canvas,context,world,"dynamic",this.width,this.height,this.mPOS.x,this.mPOS.y,PLYR_DENSITY,PLYR_FRICTION,PLYR_REST,this.name);
-	this.speed = 3;
+	this.PlayerBody = new PhysicsObject(
+		canvas,context,world,"dynamic",
+		this.width,this.height,
+		this.mPOS.x,this.mPOS.y,
+		PLYR_DENSITY,PLYR_FRICTION,PLYR_REST,
+		this.name);
+		
+	this.speed = 5;
 	this.jumpImpulse = -3;
 	this.PlayerBody.theBody.SetFixedRotation(true);
 	this.moveLeft = false;
 	this.moveRight = false;
 	this.jump = false;
 }
+
+Player.prototype.Update = function()
+{
+	if(this.moveLeft === true && this.player.PlayerBody.theBody.GetLinearVelocity().x<this.speed)
+		this.pDoMoveLeft();
+
+	if(this.moveRight === true && this.player.PlayerBody.theBody.GetLinearVelocity().x<-this.speed)
+		this.DoMoveRight();
+	
+	
+};
+
 
 Player.prototype.DoMoveLeft = function()
 {

@@ -16,10 +16,10 @@ function PhysicsObject(canvas,context,theWorld, object_type, width, height, xPos
 	this.fixDef.friction = friction;
 	this.fixDef.restitution = restitution;
 	this.bodyDef = new b2BodyDef();
-	
+
 	// SETS DEFAULT DATA FOR THE OBJECT WHICH CAN BE RETRIEVED LATER
 	this.bodyDef.userData = { name: object_name, initial_x: xPos, initial_y: yPos, friction: friction, restitution: restitution };
-	
+
 	switch(object_type)
 	{
 		case "kinematic":
@@ -32,7 +32,7 @@ function PhysicsObject(canvas,context,theWorld, object_type, width, height, xPos
 			this.bodyDef.type = b2Body.b2_staticBody;
 			break;
 	}
-	
+
 	switch(shape)
 	{
 		case "circle":
@@ -43,12 +43,12 @@ function PhysicsObject(canvas,context,theWorld, object_type, width, height, xPos
 			this.fixDef.shape = new b2PolygonShape();
 			this.fixDef.shape.SetAsBox(width, height);
 			break;
-	}		
-		
+	}
+
 		this.bodyDef.position.Set(this.x, this.y);
 		this.theBody = this.world.CreateBody(this.bodyDef);
 		this.theBody.CreateFixture(this.fixDef);
-	
+
 }
 
 

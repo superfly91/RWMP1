@@ -16,7 +16,7 @@ function Game(canvas, context, ASSET_MANAGER)
 
     // SETUP WORLD
 	this.world = new this.b2World(new this.b2Vec2(GRAVITY_X, GRAVITY_Y),  false );
-	
+
 	// SET UP BOX2D DRAW
 	this.debugDraw = new this.b2DebugDraw();
 	this.debugDraw.SetSprite(document.getElementById("surface").getContext("2d"));
@@ -24,55 +24,54 @@ function Game(canvas, context, ASSET_MANAGER)
 	this.debugDraw.SetFillAlpha(1);
 	this.debugDraw.SetLineThickness(1.0);
 	this.debugDraw.SetFlags(this.b2DebugDraw.e_shapeBit | this.b2DebugDraw.e_jointBit);
-	
+
 	// Add Draw and contact listener to world
 	this.world.SetDebugDraw(this.debugDraw);
 	this.collisions = new contactListener;
-	
+
 	// When a contact occurs
-	
-	this.collisions.BeginContact = function(contact) 
+
+	this.collisions.BeginContact = function(contact)
 	{
-    	console.log("A collision between ", contact.GetFixtureA().GetBody().GetUserData().name, contact.GetFixtureB().GetBody().GetUserData().name," detected");
-    	
-    	if(contact.GetFixtureA().GetBody().GetUserData().name == "player" || contact.GetFixtureB().GetBody().GetUserData().name == "player"){
-    	 if(contact.GetFixtureA().GetBody().GetUserData().name == "spikes" || contact.GetFixtureB().GetBody().GetUserData().name == "spikes")
-    	 {
-	 	 	game.lives--;
-	 	 	game.world.DestroyBody(game.player.PlayerBody.theBody);
-	 	 	
-	 	 }
-	 	}
-	 	
-    	console.log(game.player.lives);
+		console.log("A collision between ", contact.GetFixtureA().GetBody().GetUserData().name, contact.GetFixtureB().GetBody().GetUserData().name," detected");
+
+		if(contact.GetFixtureA().GetBody().GetUserData().name == "player" || contact.GetFixtureB().GetBody().GetUserData().name == "player"){
+			if(contact.GetFixtureA().GetBody().GetUserData().name == "spikes" || contact.GetFixtureB().GetBody().GetUserData().name == "spikes")
+			{
+				game.lives--;
+				game.world.DestroyBody(game.player.PlayerBody.theBody);
+			}
+		}
+
+		console.log(game.player.lives);
 	}
-	
+
 	// When a collision ends, but not a contact though you would think
-	
-	this.collisions.EndContact = function(contact) 
+
+	this.collisions.EndContact = function(contact)
 	{
 		//console.log("A collision between ", contact.GetFixtureA().GetBody().GetUserData().name,contact.GetFixtureB().GetBody().GetUserData().name," has ended");
 	}
-	
+
 	// Handling collisions using impulses
-	
-	this.collisions.PostSolve = function(contact, impulse) 
+
+	this.collisions.PostSolve = function(contact, impulse)
 	{
 		//console.log("impulse =", impulse.normalImpulses[0]);
     }
-    
+
 	this.world.SetContactListener(this.collisions);
 
     // CREATE LEVEL
-     this.level1 = new Level(this.canvas, this.context, this.world);
+    this.level1 = new Level(this.canvas, this.context, this.world);
 
-     // PLAYER
-	 this.player = new Player(this.canvas, this.context, this.world);
+    // PLAYER
+    this.player = new Player(this.canvas, this.context, this.world);
 }
 
 Game.prototype.collisionHandling = function(contact)
 {
-	 
+
 }
 
 
@@ -106,19 +105,18 @@ Game.prototype.init = function()
 */
 Game.prototype.update = function()
 {
-	if(this.player.moveLeft == true)
+	if(this.player.moveLeft === true)
 		this.player.DoMoveLeft();
 
-	if(this.player.jump == true)
-		this.player.DoJump();
-
-	if(this.player.moveRight == true)
+	if(this.player.moveRight === true)
 		this.player.DoMoveRight();
+
+	this.level1.update();
 
 	this.world.Step(1 / 60, 10, 10);
     this.world.ClearForces();
-    
-    
+
+
 };
 
 

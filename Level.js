@@ -31,7 +31,10 @@ function Level(canvas, context, theWorld)
     }
 
     // Create spikes - Jamie
-    this.spikes1 = new PhysicsObject(canvas,context,this.world,"kinematic",2,this.PLATFORM_SIZE,15,12.2,DENSITY,FRICTION,REST,"spikes");
+    this.spikes1 = new PhysicsObject(
+    	canvas,context,this.world,"kinematic",
+    	2,this.PLATFORM_SIZE,
+    	15,14,DENSITY,FRICTION,REST,"spikes");
 
 
     this.killBalls = new KillBalls(5, 4, canvas, context, this.world);

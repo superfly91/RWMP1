@@ -23,7 +23,7 @@ function Player(canvas, context, world)
 	this.jump = false;
 }
 
-Player.prototype.Update = function()
+Player.prototype.update = function()
 {
 	if(this.moveLeft === true && this.player.PlayerBody.theBody.GetLinearVelocity().x<this.speed)
 		this.pDoMoveLeft();

@@ -39,9 +39,18 @@ function Level(canvas, context, theWorld)
     for(i = 0; i < 3; i++)
     {
     	if(i%2==1)
-    		this.spikes[i] = new Spikes(10+i *6, 12, canvas, context, this.world,"up");
+    		this.spikes[i] = new Spikes(10+i *6, 12, canvas, context, this.world,"up",2);
     	 else
-    	 	this.spikes[i] = new Spikes(10+i *6, 12, canvas, context, this.world,"down");
+    	 	this.spikes[i] = new Spikes(10+i *6, 12, canvas, context, this.world,"down",2);
+    	
+    }
+    
+    for(i = 3; i < 6; i++)
+    {
+    	if(i%2==1)
+    		this.spikes[i] = new Spikes(-9+i *6, 5.5, canvas, context, this.world,"up",2.5);
+    	 else
+    	 	this.spikes[i] = new Spikes(-9+i *6, 5.5, canvas, context, this.world,"down",2.5);
     	
     }
 
@@ -51,9 +60,11 @@ Level.prototype.update = function()
 {
 	this.killBalls.update();
 	
-	 for(i = 0; i < 3; i++)
+	 for(i = 0; i < 6; i++)
      {
 		this.spikes[i].update();
 	 }
+	 
+
 };
 

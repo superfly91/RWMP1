@@ -1,8 +1,8 @@
-function Spikes(xPos, yPos, canvas, context, world, direction)
+function Spikes(xPos, yPos, canvas, context, world, direction,speed)
 {
 	this.initialX = xPos;
 	this.initialY = yPos;
-	this.speed = 2.0;
+	this.speed = speed;
 	
 
 	this.spikes1 = new PhysicsObject(

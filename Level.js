@@ -30,17 +30,30 @@ function Level(canvas, context, theWorld)
             this.platforms[i] = new PhysicsObject(canvas,context,this.world,"static",17.2,this.PLATFORM_SIZE,7,(i*2.2),DENSITY,1.0,REST,"platform");
     }
 
-    // Create spikes - Jamie
-    this.spikes1 = new PhysicsObject(
-    	canvas,context,this.world,"kinematic",
-    	2,this.PLATFORM_SIZE,
-    	15,13,DENSITY,FRICTION,REST,"spikes");
-
 
     this.killBalls = new KillBalls(5, 4, canvas, context, this.world);
+    
+    
+    this.spikes = [];
+    
+    for(i = 0; i < 3; i++)
+    {
+    	if(i%2==1)
+    		this.spikes[i] = new Spikes(10+i *6, 12, canvas, context, this.world,"up");
+    	 else
+    	 	this.spikes[i] = new Spikes(10+i *6, 12, canvas, context, this.world,"down");
+    	
+    }
+
 }
 
 Level.prototype.update = function()
 {
 	this.killBalls.update();
+	
+	 for(i = 0; i < 3; i++)
+     {
+		this.spikes[i].update();
+	 }
 };
+

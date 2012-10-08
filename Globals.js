@@ -1,5 +1,5 @@
 var DENSITY = 1.0;
-var FRICTION = 0.5;
+var FRICTION = 0.8;
 var REST = 0.1;
 var GRAVITY_X = 0;
 var GRAVITY_Y = 5;
@@ -8,8 +8,8 @@ var SCREEN_WIDTH = 0;
 var WORLD_SCALE = 30;
 var SCREEN_HEIGHT = 0;
 var SCREEN_WIDTH = 0;
-var PLYR_DENSITY = 0.1;
-var	PLYR_REST = 0.0;
+var PLYR_DENSITY = 0.7;
+var	PLYR_REST = 0.2;
 var PLYR_FRICTION = 1.0;
 var PLYR_LIVES = 5;
 

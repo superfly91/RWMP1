@@ -2,7 +2,7 @@
  * @author Jamie
  */
 
-function PhysicsObject(canvas,context,theWorld, object_type, width, height, xPos , yPos, density, friction ,restitution, object_name,shape)
+function PhysicsObject(canvas, context, theWorld, object_type, width, height, xPos , yPos, density, friction ,restitution, object_name,shape)
 {
 	this.x = xPos;
 	this.y = yPos;

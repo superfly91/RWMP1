@@ -32,8 +32,7 @@ function Level(canvas, context, theWorld)
 
 
     this.killBalls = new KillBalls(5, 4, canvas, context, this.world);
-    
-    
+
     this.spikes = [];
     
     for(i = 0; i < 3; i++)
